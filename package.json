@@ -1,0 +1,48 @@
+{
+    "name": "aggregated-data",
+    "version": "1.0.0",
+    "description": "Test",
+    "main": "./dist/bundle.js",
+    "private": true,
+    "author": "Stephan Korner <stephan.korner@trihow.com>",
+    "license": "MIT",
+    "scripts": {
+        "start": "node bundle.js",
+        "dev": "yarn fmt && concurrently --names \"BUILD,RUN\" --kill-others \"yarn watch\" \"nodemon --ignore db.json src/app.ts\"",
+        "fmt": "prettier --write '**/*.{js,ts,md}'",
+        "lint": "eslint 'src/**/*{.ts,.js}'",
+        "lint:fix": "yarn lint --fix",
+        "build": "./node_modules/.bin/webpack",
+        "watch": "yarn build --watch",
+        "release": "yarn build && balena push g_lukas_knutti/statistics-service"
+    },
+    "engines": {
+        "node": "16.x"
+    },
+    "dependencies": {
+        "canvas": "^2.7.0",
+        "chart.js": "^3.5.1"
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.13",
+        "@typescript-eslint/eslint-plugin": "5.12.1",
+        "@typescript-eslint/parser": "5.12.1",
+        "clean-webpack-plugin": "4.0.0",
+        "esbuild": "0.14.23",
+        "eslint": "8.10.0",
+        "eslint-config-prettier": "8.4.0",
+        "eslint-formatter-rdjson": "1.0.5",
+        "eslint-plugin-eslint-comments": "3.2.0",
+        "eslint-plugin-import": "2.25.4",
+        "eslint-plugin-prettier": "4.0.0",
+        "eslint-plugin-security": "1.4.0",
+        "prettier": "2.5.1",
+        "ts-loader": "9.2.6",
+        "ts-node": "10.5.0",
+        "typescript": "4.5.5",
+        "webpack": "5.69.1",
+        "webpack-cli": "4.9.2",
+        "webpack-node-externals": "^3.0.0",
+        "webpack-remove-debug": "^0.1.0"
+    }
+}
